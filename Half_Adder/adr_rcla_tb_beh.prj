@@ -1,0 +1,3 @@
+verilog work "ripple_car_adr_3bit.v"
+verilog work "adr_rcla_tb.v"
+verilog work "C:/Xilinx/14.1/ISE_DS/ISE//verilog/src/glbl.v"

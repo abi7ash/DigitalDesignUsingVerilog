@@ -1,0 +1,1 @@
+vhdtdtfi -lang verilog -prj HalfAdder -o D:/Work/ATME/21EC32-DSDV/Work/DigitalDesignUsingVerilog/Half_Adder/Mux2x1_conditional.tfi -lib work D:/Work/ATME/21EC32-DSDV/Work/DigitalDesignUsingVerilog/Half_Adder//mux21_condop.v -module Mux2x1_conditional -template C:/Xilinx/14.1/ISE_DS/ISE//data/tfi.tft -deleteonerror 

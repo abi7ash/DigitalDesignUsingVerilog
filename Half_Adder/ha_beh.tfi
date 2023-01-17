@@ -1,0 +1,12 @@
+
+
+
+// Instantiate the module
+ha_beh instance_name (
+    .a(a), 
+    .b(b), 
+    .sum(sum), 
+    .carry(carry)
+    );
+
+

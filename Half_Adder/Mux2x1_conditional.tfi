@@ -1,0 +1,13 @@
+
+
+
+// Instantiate the module
+Mux2x1_conditional instance_name (
+    .A(A), 
+    .B(B), 
+    .SEL(SEL), 
+    .Gbar(Gbar), 
+    .Y(Y)
+    );
+
+

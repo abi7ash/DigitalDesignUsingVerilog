@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date:    13:03:48 01/19/2023 
+// Create Date:    15:33:01 01/21/2023 
 // Design Name: 
-// Module Name:    clock_gen 
+// Module Name:    full_adder 
 // Project Name: 
 // Target Devices: 
 // Tool versions: 
@@ -18,23 +18,19 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module waitstatement(a,b,c);
-output a,b,c;
-reg a,b,c;
-	initial begin
-		// Initialize Inputs
-		 a = 0; b = 0; c = 0;
-	 end
-	 
-	always begin
-		#10 ; a = ~ a; 
-	end
-	 
-	always begin
-		#20 b = ~ b;
-	end
-
-	always #40 c = ~ c; 
-
+module FULL_ADDER (x, y, cin, sum, carry);
+input x, y, cin;
+output sum, carry;
+	HA H1 (y, cin, s0, c0);
+	HA H2 (x, s0, sum, c1);
+	//The above two statements bind module HA
+	//to the present module FULL_ADDER
+	or (carry, c0, c1);
 endmodule
 
+module HA (a, b, s, c);
+input a, b;
+output s, c;
+	xor (s, a, b);
+	and (c, a, b);
+endmodule

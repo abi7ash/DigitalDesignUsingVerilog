@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date:    13:03:48 01/19/2023 
+// Create Date:    16:04:08 01/19/2023 
 // Design Name: 
-// Module Name:    clock_gen 
+// Module Name:    counter4bit_hold 
 // Project Name: 
 // Target Devices: 
 // Tool versions: 
@@ -18,23 +18,16 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module waitstatement(a,b,c);
-output a,b,c;
-reg a,b,c;
-	initial begin
-		// Initialize Inputs
-		 a = 0; b = 0; c = 0;
-	 end
-	 
-	always begin
-		#10 ; a = ~ a; 
+module countr_hold (clk, hold, q);
+input clk,hold;
+output [3:0] q;
+reg [3:0] q;
+	initial q = 4'b0000;
+	/*This initialization is needed if we want to start counting
+	from 0000 */
+	always @ (posedge clk) begin
+		if(hold == 0)
+			q = q + 1;
 	end
-	 
-	always begin
-		#20 b = ~ b;
-	end
-
-	always #40 c = ~ c; 
-
 endmodule
 

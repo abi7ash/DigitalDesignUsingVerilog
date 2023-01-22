@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date:    13:03:48 01/19/2023 
+// Create Date:    10:13:58 01/21/2023 
 // Design Name: 
-// Module Name:    clock_gen 
+// Module Name:    factorial 
 // Project Name: 
 // Target Devices: 
 // Tool versions: 
@@ -18,23 +18,19 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module waitstatement(a,b,c);
-output a,b,c;
-reg a,b,c;
-	initial begin
-		// Initialize Inputs
-		 a = 0; b = 0; c = 0;
-	 end
-	 
-	always begin
-		#10 ; a = ~ a; 
+module factr (N, z);
+input [5:0] N;
+output [15:0] z;
+reg [15:0] z;
+/* Since z is an output, and it will appear inside
+"always," then Z has to be declared "reg" */
+integer i;
+	always @ (N) begin
+		 z = 16'd1;
+		 i = 0;
+		 while (i < N)	 begin
+			 i = i + 1;
+			 z = i * z;
+		 end
 	end
-	 
-	always begin
-		#20 b = ~ b;
-	end
-
-	always #40 c = ~ c; 
-
 endmodule
-

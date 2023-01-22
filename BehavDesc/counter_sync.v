@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date:    13:03:48 01/19/2023 
+// Create Date:    15:58:02 01/19/2023 
 // Design Name: 
-// Module Name:    clock_gen 
+// Module Name:    counter_sync 
 // Project Name: 
 // Target Devices: 
 // Tool versions: 
@@ -18,23 +18,12 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module waitstatement(a,b,c);
-output a,b,c;
-reg a,b,c;
-	initial begin
-		// Initialize Inputs
-		 a = 0; b = 0; c = 0;
-	 end
-	 
-	always begin
-		#10 ; a = ~ a; 
-	end
-	 
-	always begin
-		#20 b = ~ b;
-	end
-
-	always #40 c = ~ c; 
-
+module countr_direct (clk, Z);
+input clk;
+output [3:0] Z;
+reg [3:0] Z;
+	initial Z = 4'b0000;
+	/*This initialization is needed if we want to start counting
+	from 0000 */
+	always @ (posedge clk) Z = Z + 1;
 endmodule
-

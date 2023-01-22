@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date:    13:03:48 01/19/2023 
+// Create Date:    14:57:54 01/21/2023 
 // Design Name: 
-// Module Name:    clock_gen 
+// Module Name:    mux21 
 // Project Name: 
 // Target Devices: 
 // Tool versions: 
@@ -18,23 +18,13 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module waitstatement(a,b,c);
-output a,b,c;
-reg a,b,c;
-	initial begin
-		// Initialize Inputs
-		 a = 0; b = 0; c = 0;
-	 end
-	 
-	always begin
-		#10 ; a = ~ a; 
-	end
-	 
-	always begin
-		#20 b = ~ b;
-	end
-
-	always #40 c = ~ c; 
-
+module mux2x1 (A, B, SEL, Gbar, Y);
+input A, B, SEL, Gbar;
+output Y;
+	and #7 (S4, A, S2, S1);
+	or #7 (Y, S4, S5);
+	and #7 (S5, B, S3, S1);
+	not #7 (S2, SEL);
+	not #7 (S3, S2);
+	not #7 (S1, Gbar);
 endmodule
-

@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date:    13:03:48 01/19/2023 
+// Create Date:    12:31:23 01/21/2023 
 // Design Name: 
-// Module Name:    clock_gen 
+// Module Name:    adh_bp 
 // Project Name: 
 // Target Devices: 
 // Tool versions: 
@@ -18,23 +18,17 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module waitstatement(a,b,c);
-output a,b,c;
-reg a,b,c;
-	initial begin
-		// Initialize Inputs
-		 a = 0; b = 0; c = 0;
-	 end
-	 
-	always begin
-		#10 ; a = ~ a; 
+module ADH_BEH (clk, BP, ADH);
+input clk;
+input [8:0] BP;
+// Assume BP takes only positive integer values
+output [8:0] ADH;
+reg [8:0] ADH;
+always @ (clk)	begin
+	if (clk == 1)	begin
+		 if (BP <= 20) ADH = 100;
+		 else if (BP > 45.0) ADH = 0;
+		 else ADH = BP * (-4) + 180.0;
 	end
-	 
-	always begin
-		#20 b = ~ b;
-	end
-
-	always #40 c = ~ c; 
-
+end
 endmodule
-
